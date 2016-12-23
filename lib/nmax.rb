@@ -4,10 +4,10 @@ module Nmax
   def self.run
     n_numbers = ARGV.shift.to_i
     stream = ARGF
-    puts self.nmax(n_numbers, stream)
+    puts self.process_numbers(n_numbers, stream)
   end
 
-  def self.nmax(n, data)
+  def self.process_numbers(n, data)
     numbers = []
     data.each_line do |line|
       if matches = line.scan(/\d{1,1000}/)
