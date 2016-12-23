@@ -5,7 +5,7 @@ describe Nmax do
   let(:text) { File.open(test_file_path) }
 
   it ".process_numbers outputs an array of integers" do
-    expect(subject.process_numbers(5, text).any? { |a| a.class == Fixnum }).to be_truthy
+    expect(subject.process_numbers(5, text).all? { |a| a.class == Fixnum }).to be_truthy
   end
 
   it ".process_numbers outputs an array with n elements" do
