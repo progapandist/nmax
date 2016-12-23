@@ -1,12 +1,29 @@
 require "nmax/version"
 
 module Nmax
-  n_numbers = ARGV.shift.to_i
-  numbers = []
-  ARGF.each_line do |line|
-    if matches = line.match(/\d{1,1000}/).to_a
-      matches.each { |number| numbers << number.to_i }
-    end
+  def self.run
+    n_numbers = ARGV.shift.to_i
+    stream = ARGF
+    puts self.nmax(n_numbers, stream)
   end
-  puts numbers.uniq.sort.reverse[0..n_numbers - 1]
+
+  def self.nmax(n, data)
+    numbers = []
+    data.each_line do |line|
+      if matches = line.scan(/\d{1,1000}/)
+        matches.each do |match|
+          number = match.to_i
+          numbers << number if numbers.empty?
+          next if numbers.include?(number)
+          if numbers.length < n
+            numbers << number
+          else
+            numbers << number
+            numbers.delete(numbers.min)
+          end
+        end
+      end
+    end
+    numbers.sort.reverse
+  end
 end
