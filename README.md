@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/progapandist/nmax.svg?branch=master)](https://travis-ci.org/progapandist/nmax)
+
 # nmax
 
 **Note:** nmax gem is not deployed to rubygems.org and should be installed locally.  
